@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbngskflfjw3t"]
+
+[ext_resource type="Script" path="res://addons/apeloot/inventory/item_draggable/drag_preview.gd" id="1_stfhx"]
+
+[node name="DragPreview" type="Control"]
+modulate = Color(1, 1, 1, 0.541176)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_stfhx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 5
+stretch_mode = 5

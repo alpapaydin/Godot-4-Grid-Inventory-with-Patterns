@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr2jl7o0gnl6u"]
+
+[ext_resource type="Texture2D" uid="uid://bpp0uh1ee08q8" path="res://addons/apeloot/image/border1.png" id="1_mn2th"]
+[ext_resource type="Script" path="res://addons/apeloot/inventory/item_tooltip/item_tooltip.gd" id="2_7m56c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6dayw"]
+texture = ExtResource("1_mn2th")
+expand_margin_left = 3.0
+expand_margin_top = 4.0
+expand_margin_right = 3.0
+expand_margin_bottom = 4.0
+
+[node name="ItemTooltip" type="PanelContainer"]
+texture_filter = 1
+offset_right = 180.0
+offset_bottom = 120.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_6dayw")
+script = ExtResource("2_7m56c")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.128502, 0.184288, 0.176318, 0.686275)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Item Name"
+horizontal_alignment = 1
+
+[node name="CountLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DescLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 6
+text = "Description"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

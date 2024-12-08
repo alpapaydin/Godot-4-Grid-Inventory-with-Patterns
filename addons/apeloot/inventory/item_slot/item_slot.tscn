@@ -1,0 +1,150 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3ov6txoccv0v"]
+
+[ext_resource type="Texture2D" uid="uid://dtww0mvg811mx" path="res://addons/apeloot/image/CharacterBox_56x57.png" id="1_oidls"]
+[ext_resource type="Script" path="res://addons/apeloot/inventory/item_slot/item_slot.gd" id="1_st71r"]
+
+[sub_resource type="Animation" id="Animation_tli4l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Highlight:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Highlight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qr1tx"]
+load_path = "res://.godot/imported/borderanim1.png-0dc7235d99fad4689516373d8bf9ef90.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qmm42"]
+load_path = "res://.godot/imported/borderanim2.png-8ae85ecdcbede07d9b40cc788076cb21.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8nyex"]
+load_path = "res://.godot/imported/borderanim3.png-e100014fde0199f0129e209d932b636b.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_de2ym"]
+load_path = "res://.godot/imported/borderanim4.png-69b569c119b6fb8123198a8f02d6f07c.ctex"
+
+[sub_resource type="Animation" id="Animation_bbmtc"]
+resource_name = "item_highlighted"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Highlight:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_qr1tx"), SubResource("CompressedTexture2D_qmm42"), SubResource("CompressedTexture2D_8nyex"), SubResource("CompressedTexture2D_de2ym")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Highlight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_gsi3t"]
+resource_name = "item_released"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Highlight:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Highlight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8f6b4"]
+_data = {
+"RESET": SubResource("Animation_tli4l"),
+"item_highlighted": SubResource("Animation_bbmtc"),
+"item_released": SubResource("Animation_gsi3t")
+}
+
+[node name="ItemSlot" type="PanelContainer"]
+script = ExtResource("1_st71r")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.698039, 0.698039, 0.698039, 1)
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_oidls")
+
+[node name="Icon" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 5
+stretch_mode = 3
+
+[node name="Blocked" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Highlight" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8f6b4")
+}
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

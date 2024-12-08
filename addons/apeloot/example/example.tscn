@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpay6w53gou13"]
+
+[ext_resource type="PackedScene" uid="uid://ciby8lgwu8d4n" path="res://addons/apeloot/inventory/grid_inventory/inventory_interface.tscn" id="1_bko6p"]
+[ext_resource type="Texture2D" uid="uid://dtww0mvg811mx" path="res://addons/apeloot/image/CharacterBox_56x57.png" id="2_a5wlf"]
+[ext_resource type="Script" path="res://addons/apeloot/example/chest_example.gd" id="3_3xnj6"]
+[ext_resource type="Script" path="res://addons/apeloot/example/trash.gd" id="4_0y0yr"]
+
+[node name="Example" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="InventoryTest" parent="." instance=ExtResource("1_bko6p")]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 36.0
+offset_right = 515.0
+offset_bottom = 250.0
+mouse_filter = 1
+id = "testid"
+full_size = true
+slot_background = ExtResource("2_a5wlf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 8.0
+offset_right = 173.0
+offset_bottom = 31.0
+text = "An example inventory (Click on slots to spawn test items)"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 253.0
+offset_right = 338.0
+offset_bottom = 276.0
+text = "A single slot inventory (Each slot fits any single item with any pattern)"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 732.0
+offset_top = 15.0
+offset_right = 1135.0
+offset_bottom = 38.0
+text = "A pickup only inventory (for chests etc.)"
+
+[node name="Trash" type="Label" parent="."]
+offset_left = 794.0
+offset_top = 257.0
+offset_right = 842.0
+offset_bottom = 280.0
+text = "Trash can"
+
+[node name="SingleSlotTest" parent="." instance=ExtResource("1_bko6p")]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 282.0
+offset_right = 122.0
+offset_bottom = 402.0
+mouse_filter = 1
+id = "singleSlotTest"
+slot_count = 4
+columns = 2
+single_slot = true
+slot_background = ExtResource("2_a5wlf")
+
+[node name="SingleSlotTest2" parent="." instance=ExtResource("1_bko6p")]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 284.0
+offset_right = 250.0
+offset_bottom = 388.0
+mouse_filter = 1
+id = "singleSlotTest2"
+slot_count = 1
+columns = 1
+single_slot = true
+slot_background = ExtResource("2_a5wlf")
+
+[node name="PickupOnlyTest" parent="." instance=ExtResource("1_bko6p")]
+layout_mode = 0
+offset_left = 767.0
+offset_top = 64.0
+offset_right = 1023.0
+offset_bottom = 207.0
+mouse_filter = 1
+script = ExtResource("3_3xnj6")
+id = "pickuponly"
+slot_count = 6
+columns = 3
+pickup_only = true
+slot_background = ExtResource("2_a5wlf")
+
+[node name="TrashCan" parent="." instance=ExtResource("1_bko6p")]
+layout_mode = 0
+offset_left = 765.0
+offset_top = 295.0
+offset_right = 866.0
+offset_bottom = 399.0
+mouse_filter = 1
+script = ExtResource("4_0y0yr")
+id = "trash"
+slot_count = 1
+columns = 1
+single_slot = true

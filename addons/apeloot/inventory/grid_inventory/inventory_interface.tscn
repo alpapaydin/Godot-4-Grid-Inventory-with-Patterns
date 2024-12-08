@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciby8lgwu8d4n"]
+
+[ext_resource type="Script" path="res://addons/apeloot/inventory/grid_inventory/inventory_interface.gd" id="1_os5kh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j5qmp"]
+
+[node name="InventoryInterface" type="PanelContainer"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_j5qmp")
+script = ExtResource("1_os5kh")
+slot_separation = Vector2(2, 0)
